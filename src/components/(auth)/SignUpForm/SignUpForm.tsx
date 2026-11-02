@@ -18,16 +18,88 @@ import {
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
-import React from "react"
+import React, { useState } from "react"
+import { authClient } from "@/lib/auth-client"
+import { toast } from "sonner"
+import { usePathname, useRouter } from "next/navigation"
+
+interface SignUpUser {
+     name: string;
+     email: string;
+     img_url: string;
+     password: string;
+}
 
 const SignUpForm = ({ className, ...props }: React.ComponentProps<"div">) => {
+     const [password, setPassword] = useState("");
+     const [passwordError, setPasswordError] = useState("");
+
+     // hooks
+     const router = useRouter();
+     const pathname = usePathname();
+     const triggerdPath = pathname || "/";
+     console.log(triggerdPath);
+
+     const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+          const value = e.target.value;
+          setPassword(value);
+
+          if (value.length > 0) {
+               const hasLower = /[a-z]/.test(value);
+               const hasUpper = /[A-Z]/.test(value);
+               const isLongEnough = value.length >= 6;
+
+               if (!hasLower || !hasUpper || !isLongEnough) {
+                    setPasswordError("Password must be a combination of uppercase, lowercase and at least 6 characters.");
+               } else {
+                    setPasswordError("");
+               }
+          } else {
+               setPasswordError("");
+          }
+     };
+
      const handleSignIn = async (e: React.SubmitEvent<HTMLFormElement>) => {
           e.preventDefault();
 
-          const formData = new FormData(e.currentTarget);
-          const formValues = Object.fromEntries(formData.entries());
+          const hasLower = /[a-z]/.test(password);
+          const hasUpper = /[A-Z]/.test(password);
+          const isLongEnough = password.length >= 6;
 
-          console.log(formValues);
+          if (!hasLower || !hasUpper || !isLongEnough) {
+               setPasswordError("Password must be a combination of uppercase, lowercase and at least 6 characters.");
+               return;
+          }
+
+          const formData = new FormData(e.currentTarget);
+          // const formValues = Object.fromEntries(formData.entries()) as SignUpUser;
+          const formValues: SignUpUser = {
+               name: formData.get("name") as string || "",
+               email: formData.get("email") as string || "",
+               img_url: formData.get("img_url") as string || "",
+               password: formData.get("password") as string || ""
+          }
+
+          // console.log("Signup before auth:", formValues);
+
+          try{
+               const { data, error } = await authClient.signUp.email({
+                    name: formValues?.name,
+                    email: formValues?.email,
+                    image: formValues?.img_url,
+                    password: formValues?.password
+               });
+
+               // console.log("Response after auth:", data);
+               if(data?.user) {
+                    router.push(triggerdPath);
+                    toast.success("User signup successfully");
+               }else {
+                    toast.error("Something went wrong! Try again.");
+               }
+          }catch(err: any) {
+               console.error("Signup error:", err);
+          }
      }
 
      return (
@@ -41,6 +113,7 @@ const SignUpForm = ({ className, ...props }: React.ComponentProps<"div">) => {
                     <CardContent>
                          <form onSubmit={handleSignIn}>
                               <FieldGroup>
+                                   {/* Google signup button */}
                                    <Field>
                                         <Button variant="outline" type="button">
                                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -69,7 +142,18 @@ const SignUpForm = ({ className, ...props }: React.ComponentProps<"div">) => {
 
                                    <Field>
                                         <FieldLabel htmlFor="password">Password</FieldLabel>
-                                        <Input id="password" type="password" name="password" placeholder="Password" required />
+                                        <Input
+                                             id="password"
+                                             type="password"
+                                             name="password"
+                                             placeholder="Password"
+                                             value={password}
+                                             onChange={handlePasswordChange}
+                                             required
+                                        />
+                                        {passwordError && (
+                                             <p className="text-xs text-red-500 mt-1">{passwordError}</p>
+                                        )}
                                    </Field>
 
                                    <Field>
