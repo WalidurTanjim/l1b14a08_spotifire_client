@@ -19,15 +19,49 @@ import {
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
 import React from "react"
+import { string } from "better-auth"
+import { authClient } from "@/lib/auth-client"
+import { toast } from "sonner"
+import { usePathname, useRouter } from "next/navigation"
+
+interface SignInUser {
+     email: string;
+     password: string;
+}
 
 const SignInForm = ({ className, ...props }: React.ComponentProps<"div">) => {
+     // hooks
+     const router = useRouter();
+     const pathname = usePathname();
+
      const handleSignIn = async (e: React.SubmitEvent<HTMLFormElement>) => {
           e.preventDefault();
 
           const formData = new FormData(e.currentTarget);
-          const formValues = Object.fromEntries(formData.entries());
+          // const formValues = Object.fromEntries(formData.entries());
+          const formValues: SignInUser = {
+               email: formData.get("email") as string || "",
+               password: formData.get("password") as string || ""
+          };
 
-          console.log(formValues);
+          // console.log("Signin befor auth", formValues);
+
+          try{
+               const { data, error } = await authClient.signIn.email({
+                    email: formValues?.email,
+                    password: formValues?.password
+               });
+
+               // console.log("Response after auth:", data);
+
+               if(data?.user) {
+                    toast?.success("User signin successfully");
+               }else {
+                    toast?.error("Something went wrong! Try again")
+               }
+          }catch(err: any) {
+               console.error("Signin error:", err);
+          }
      }
 
      return (
