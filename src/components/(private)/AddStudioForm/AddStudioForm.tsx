@@ -98,7 +98,7 @@ export default function AddNewStudioForm() {
                amenities: formData.getAll("amenities") as string[] || [],
                details: formData.get("details") as string || ""
           };
-          console.log("Form values:", formValues);
+          // console.log("Form values:", formValues);
 
           try {
                const res = await fetch(`http://localhost:5000/studios`, {
