@@ -59,7 +59,7 @@ export default function HowDoesWorks() {
                     {/* Header Section */}
                     <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
                          <span className="text-xs font-bold tracking-widest text-amber-600 dark:text-amber-500 uppercase">FRICTIONLESS BOOKING</span>
-                         <h2 className="text-3xl md:text-4xl font-extrabold text-neutral-900 dark:text-neutral-50 tracking-tight">How StudioSpace Works</h2>
+                         <h2 className="text-3xl md:text-4xl font-semibold text-neutral-900 dark:text-neutral-50 tracking-tight">How StudioSpace Works</h2>
                          <p className="text-sm md:text-base text-neutral-500 dark:text-neutral-400 leading-relaxed font-normal">Four simple steps from pre-production concept to rolling camera in world-class creative facilities.</p>
                     </div>
 
