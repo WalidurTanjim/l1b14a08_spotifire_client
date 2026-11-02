@@ -1,6 +1,8 @@
-import AddNewStudioForm from "@/components/(private)/AddStudioForm/AddStudioForm";
+import UpdateStudioForm from "@/components/(private)/UpdateStudioForm/UpdateStudioForm";
 
-export default function UpdateStudioById() {
+export default async function UpdateStudioById({ params }: { params: Promise<{ studioId: string }>}) {
+     const { studioId } = await params;
+
      return (
           <div className="w-full min-h-screen bg-zinc-50/50 py-8 md:py-12">
                <div className="px-5 md:px-8 lg:px-12 xl:px-20 w-full max-w-7xl mx-auto space-y-8">
@@ -13,7 +15,7 @@ export default function UpdateStudioById() {
 
                     {/* Form Container */}
                     <div className="bg-white border border-zinc-200 rounded-2xl shadow-sm p-6 md:p-8">
-                         <AddNewStudioForm />
+                         <UpdateStudioForm studioId={studioId} />
                     </div>
 
                </div>

@@ -74,7 +74,6 @@ const Navbar = () => {
                                         </div>
                                         <Link href="/add-studio" onClick={() => { setMenuOpen(false); setMobileProfileOpen(false); }} className="text-sm text-zinc-600 hover:text-zinc-900 px-4 py-2">Add New Studio</Link>
                                         <Link href="/my-listings" onClick={() => { setMenuOpen(false); setMobileProfileOpen(false); }} className="text-sm text-zinc-600 hover:text-zinc-900 px-4 py-2">My Studio Listings</Link>
-                                        <Link href="/add-studio" onClick={() => { setMenuOpen(false); setMobileProfileOpen(false); }} className="text-sm text-zinc-600 hover:text-zinc-900 px-4 py-2">Update Studio</Link>
                                         <Link href="/my-bookings" onClick={() => { setMenuOpen(false); setMobileProfileOpen(false); }} className="text-sm text-zinc-600 hover:text-zinc-900 px-4 py-2">My Bookings</Link>
                                         <button onClick={async () => {
                                                   setProfileMenuOpen(false);
@@ -129,7 +128,6 @@ const Navbar = () => {
                                         <div className="flex flex-col pl-4 gap-2 border-l-2 border-zinc-200 my-1">
                                              <Link href="/add-studio" onClick={() => { setMenuOpen(false); setMobileProfileOpen(false); }} className="text-sm text-zinc-600 hover:text-zinc-900 py-1">Add New Studio</Link>
                                              <Link href="/my-listings" onClick={() => { setMenuOpen(false); setMobileProfileOpen(false); }} className="text-sm text-zinc-600 hover:text-zinc-900 py-1">My Studio Listings</Link>
-                                             <Link href="/add-studio" onClick={() => { setMenuOpen(false); setMobileProfileOpen(false); }} className="text-sm text-zinc-600 hover:text-zinc-900 py-1">Update Studio</Link>
                                              <Link href="/my-bookings" onClick={() => { setMenuOpen(false); setMobileProfileOpen(false); }} className="text-sm text-zinc-600 hover:text-zinc-900 py-1">My Bookings</Link>
                                              <button onClick={async () => {
                                                        setMenuOpen(false);

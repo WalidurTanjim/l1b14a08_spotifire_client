@@ -78,7 +78,7 @@ export default function AddNewStudioForm() {
           }
      }
 
-     const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
+     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           e.preventDefault()
           setLoading(true)
           setErrorMessage("")
@@ -89,16 +89,16 @@ export default function AddNewStudioForm() {
                username: formData.get("username") as string || "",
                email: formData.get("email") as string || "",
                studio_title: formData.get("studio_title") as string || "",
-               category: formData.get("category") as string || "",
+               category: category,
                hourly_rate: Number(formData.get("hourly_rate")) || 0,
                security_deposit: Number(formData.get("security_deposit")) || 0,
                max_capacity: Number(formData.get("max_capacity")) || 0,
                location: formData.get("location") as string || "",
                image: formData.get("image") as string || "",
-               amenities: formData.getAll("amenities") as string[] || [],
+               amenities: amenities,
                details: formData.get("details") as string || ""
           };
-          // console.log("Form values:", formValues);
+          console.log("Form values:", formValues);
 
           try {
                const res = await fetch(`http://localhost:5000/studios`, {
@@ -119,8 +119,8 @@ export default function AddNewStudioForm() {
                }
 
                // console.log(res);
-          } catch (err: any) {
-               setErrorMessage(err?.message || "Something went wrong. Please try again.")
+          } catch (err) {
+               setErrorMessage(err instanceof Error ? err.message : "Something went wrong. Please try again.")
           } finally {
                setLoading(false)
           }
