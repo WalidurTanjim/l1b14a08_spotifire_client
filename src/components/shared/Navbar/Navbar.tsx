@@ -68,13 +68,15 @@ const Navbar = () => {
 
                               {/* large device profile menu */}
                               {profileMenuOpen && (
-                                   <div className="absolute right-0 mt-2 w-48 bg-white border border-zinc-200 rounded-md shadow-lg py-1.5 flex flex-col z-50">
-                                        <div className="px-4 py-2 border-b border-zinc-100">
+                                   <div className="absolute right-0 mt-2 w-48 bg-white border border-zinc-200 rounded-md shadow-lg flex flex-col z-50 pb-1.5">
+                                        <div className="px-4 py-2 border-b border-zinc-100 bg-gray-100 hover:cursor-not-allowed">
+                                             <p className="text-sm text-slate-700 ">{user?.name}</p>
                                              <p className="text-xs text-zinc-500 font-medium truncate">{user?.email}</p>
                                         </div>
                                         <Link href="/add-studio" onClick={() => { setMenuOpen(false); setMobileProfileOpen(false); }} className="text-sm text-zinc-600 hover:text-zinc-900 px-4 py-2">Add New Studio</Link>
                                         <Link href="/my-listings" onClick={() => { setMenuOpen(false); setMobileProfileOpen(false); }} className="text-sm text-zinc-600 hover:text-zinc-900 px-4 py-2">My Studio Listings</Link>
                                         <Link href="/my-bookings" onClick={() => { setMenuOpen(false); setMobileProfileOpen(false); }} className="text-sm text-zinc-600 hover:text-zinc-900 px-4 py-2">My Bookings</Link>
+                                        <Link href="/wishlist" onClick={() => { setMenuOpen(false); setMobileProfileOpen(false); }} className="text-sm text-zinc-600 hover:text-zinc-900 px-4 py-2">Saved Wishlist</Link>
                                         <button onClick={async () => {
                                                   setProfileMenuOpen(false);
                                                   await authClient.signOut();
@@ -129,6 +131,7 @@ const Navbar = () => {
                                              <Link href="/add-studio" onClick={() => { setMenuOpen(false); setMobileProfileOpen(false); }} className="text-sm text-zinc-600 hover:text-zinc-900 py-1">Add New Studio</Link>
                                              <Link href="/my-listings" onClick={() => { setMenuOpen(false); setMobileProfileOpen(false); }} className="text-sm text-zinc-600 hover:text-zinc-900 py-1">My Studio Listings</Link>
                                              <Link href="/my-bookings" onClick={() => { setMenuOpen(false); setMobileProfileOpen(false); }} className="text-sm text-zinc-600 hover:text-zinc-900 py-1">My Bookings</Link>
+                                             <Link href="/wishlist" onClick={() => { setMenuOpen(false); setMobileProfileOpen(false); }} className="text-sm text-zinc-600 hover:text-zinc-900 py-1">Saved Wishlist</Link>
                                              <button onClick={async () => {
                                                        setMenuOpen(false);
                                                        setMobileProfileOpen(false);

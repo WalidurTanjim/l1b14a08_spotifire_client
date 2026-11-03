@@ -22,6 +22,18 @@ const nextConfig: NextConfig = {
         port: '5000',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'cdn.pixabay.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.jycenawejeq.biz',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
   experimental: {
