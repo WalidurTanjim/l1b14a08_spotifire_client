@@ -37,8 +37,7 @@ const SignUpForm = ({ className, ...props }: React.ComponentProps<"div">) => {
      // hooks
      const router = useRouter();
      const pathname = usePathname();
-     const triggerdPath = pathname || "/";
-     console.log(triggerdPath);
+     // console.log("Signup pathname:", pathname);
 
      const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
           const value = e.target.value;
@@ -92,7 +91,7 @@ const SignUpForm = ({ className, ...props }: React.ComponentProps<"div">) => {
 
                // console.log("Response after auth:", data);
                if(data?.user) {
-                    router.push(triggerdPath);
+                    router.push("/");
                     toast.success("User signup successfully");
                }else {
                     toast.error("Something went wrong! Try again.");

@@ -9,9 +9,14 @@ export async function proxy(request: NextRequest) {
           headers: await headers()
      });
      if(!session) {
-          return NextResponse.redirect(new URL("/signin", request.url));
+          const currentPath = request.nextUrl.pathname;
+          const signInUrl = new URL("/signin", request.url);
+          signInUrl.searchParams.set("callbackUrl", currentPath);
+          return NextResponse.redirect(signInUrl);
      }
      const user = session?.user;
+
+     return NextResponse.next();
 }
 
 export const config = {

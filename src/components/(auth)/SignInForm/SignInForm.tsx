@@ -22,7 +22,7 @@ import React from "react"
 import { string } from "better-auth"
 import { authClient } from "@/lib/auth-client"
 import { toast } from "sonner"
-import { usePathname, useRouter } from "next/navigation"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
 
 interface SignInUser {
      email: string;
@@ -33,6 +33,9 @@ const SignInForm = ({ className, ...props }: React.ComponentProps<"div">) => {
      // hooks
      const router = useRouter();
      const pathname = usePathname();
+     const searchParams = useSearchParams();
+     const callbackUrl = searchParams.get("callbackUrl") || "/";
+     console.log("Signin pathname:", callbackUrl);
 
      const handleSignIn = async (e: React.SubmitEvent<HTMLFormElement>) => {
           e.preventDefault();
@@ -55,6 +58,7 @@ const SignInForm = ({ className, ...props }: React.ComponentProps<"div">) => {
                // console.log("Response after auth:", data);
 
                if(data?.user) {
+                    router.push(callbackUrl);
                     toast?.success("User signin successfully");
                }else {
                     toast?.error("Something went wrong! Try again")

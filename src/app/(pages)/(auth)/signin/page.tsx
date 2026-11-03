@@ -1,6 +1,7 @@
 import SignInForm from "@/components/(auth)/SignInForm/SignInForm"
 import { GalleryVerticalEnd } from "lucide-react"
 import Link from "next/link"
+import { Suspense } from "react"
 
 const SignInPage = () => {
      return (
@@ -11,7 +12,9 @@ const SignInPage = () => {
                     Spotifire
                </Link>
 
-               <SignInForm />
+               <Suspense fallback={<p>Signin page loading...</p>}>
+                    <SignInForm />
+               </Suspense>
                </div>
           </div>
      )
