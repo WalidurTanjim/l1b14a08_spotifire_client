@@ -32,7 +32,7 @@ const MyListingsList = async() => {
      }
 
      const listings = await fetchMyListings(session?.user?.email);
-     console.log(listings);
+     // console.log(listings);
 
      return (
           <>

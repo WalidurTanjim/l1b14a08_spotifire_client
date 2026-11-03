@@ -35,7 +35,7 @@ const SignInForm = ({ className, ...props }: React.ComponentProps<"div">) => {
      const pathname = usePathname();
      const searchParams = useSearchParams();
      const callbackUrl = searchParams.get("callbackUrl") || "/";
-     console.log("Signin pathname:", callbackUrl);
+     // console.log("Signin pathname:", callbackUrl);
 
      const handleSignIn = async (e: React.SubmitEvent<HTMLFormElement>) => {
           e.preventDefault();

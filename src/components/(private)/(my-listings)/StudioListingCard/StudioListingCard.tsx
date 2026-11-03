@@ -1,16 +1,14 @@
-"use client"
-
 import Link from "next/link"
 import Image from "next/image"
 import { Studio } from "@/types/studio"
 import { MapPin, Users, DollarSign, Edit, Trash2 } from "lucide-react"
+import StudioListingCardDeleteBtn from "@/components/(Buttons)/StudioListingCardDeleteBtn/StudioListingCardDeleteBtn";
 
 interface StudioCardProps {
      studio: Studio;
-     onDelete?: (id: string) => void;
 }
 
-export default function StudioListingCard({ studio, onDelete }: StudioCardProps) {
+export default function StudioListingCard({ studio }: StudioCardProps) {
      return (
           <div className="bg-white border border-zinc-200 rounded-2xl p-4 md:p-5 shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
 
@@ -68,14 +66,7 @@ export default function StudioListingCard({ studio, onDelete }: StudioCardProps)
                          <span>Update</span>
                     </Link>
 
-                    <button
-                         type="button"
-                         onClick={() => onDelete?.(studio._id)}
-                         className="flex-1 md:flex-initial inline-flex items-center justify-center gap-1.5 bg-red-50 hover:bg-red-100 text-red-600 text-xs font-medium px-3.5 py-2 rounded-xl transition-colors cursor-pointer border border-red-100"
-                    >
-                         <Trash2 className="w-3.5 h-3.5" />
-                         <span>Delete</span>
-                    </button>
+                    <StudioListingCardDeleteBtn studioId={studio?._id} />
                </div>
 
           </div>
