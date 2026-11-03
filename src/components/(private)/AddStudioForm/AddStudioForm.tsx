@@ -7,13 +7,11 @@ import { toast } from "sonner"
 import { useRouter } from "next/navigation"
 
 const CATEGORIES = [
-     "Photo Studio",
-     "Film Stage",
-     "Podcast Lounge",
-     "Music Suite",
-     "Workshop",
-     "Dance Studio",
-     "Art Gallery"
+     { name: "Photo Studios", slug: "photo-studios" },
+     { name: "Sound Stages", slug: "sound-stages" },
+     { name: "Podcast Rooms", slug: "podcast-rooms" },
+     { name: "Music Suites", slug: "music-suites" },
+     { name: "Art Workshops", slug: "art-workshops" }
 ]
 
 const COMMON_AMENITIES = [
@@ -202,10 +200,8 @@ export default function AddNewStudioForm() {
                               name="studio_category"
                               className="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-sm text-zinc-900 bg-white focus:outline-none focus:ring-2 focus:ring-zinc-900 transition-all cursor-pointer"
                          >
-                              {CATEGORIES.map((cat) => (
-                                   <option key={cat} value={cat}>
-                                        {cat}
-                                   </option>
+                              {CATEGORIES.map((cat, idx) => (
+                                   <option key={idx} value={cat?.slug}>{cat?.name}</option>
                               ))}
                          </select>
                     </div>

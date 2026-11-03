@@ -320,7 +320,7 @@ export default function Banner() {
                               {/* CTAs */}
                               <div className="flex flex-wrap items-center gap-3 pt-2">
                                    <Link
-                                        href={activeSlideData.primaryCtaLink}
+                                        href="/studios"
                                         className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-medium text-sm transition-all shadow-sm"
                                    >
                                         {activeSlideData.primaryCtaText}

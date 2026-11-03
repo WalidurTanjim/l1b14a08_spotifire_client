@@ -106,7 +106,7 @@ const DynamicStudioById = async ({ params }: { params: Promise<{ studioId: strin
 
                     {/* Image Gallery Showcase */}
                     <div className="mb-8">
-                         <div className="relative aspect-[16/9] md:aspect-21/9 w-full overflow-hidden rounded-2xl bg-zinc-900 shadow-md">
+                         <div className="relative aspect-video md:aspect-21/9 w-full overflow-hidden rounded-2xl bg-zinc-900 shadow-md">
                               <Image
                                    src={studio.image || "/placeholder-studio.jpg"}
                                    alt={studio.studio_title}
