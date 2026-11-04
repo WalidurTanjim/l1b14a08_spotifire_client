@@ -11,4 +11,5 @@ export interface Studio {
      image: string;
      amenities: string[];
      details: string;
+     createdAt: string;
 }

@@ -52,11 +52,15 @@ const StudioCard = async ({ studio }: StudioCardProps) => {
 
             {/* Card Footer with Price and Action */}
             <CardFooter className="p-5 pt-1 flex items-center justify-between border-t border-zinc-100 dark:border-zinc-900 mt-auto">
-                <div>
-                    <span className="text-lg font-bold text-zinc-900 dark:text-zinc-100">
-                        ${studio.hourly_rate}
-                    </span>
-                    <span className="text-xs text-zinc-500 dark:text-zinc-400 ml-1">/ hour</span>
+                <div className="flex flex-col">
+                    <div>
+                        <span className="text-lg font-bold text-zinc-900 dark:text-zinc-100">${studio.hourly_rate}</span>
+                        <span className="text-xs text-zinc-500 dark:text-zinc-400 ml-1">/ hour</span>
+                    </div>
+
+                    <div>
+                        <span className="text-xs text-zinc-500 dark:text-zinc-400">CreatedAt: {new Date(studio?.createdAt).toLocaleDateString()}</span>
+                    </div>
                 </div>
 
                 <Button  className="gap-1.5 font-medium">

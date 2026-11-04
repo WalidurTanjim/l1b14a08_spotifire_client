@@ -1,23 +1,6 @@
 import React, { Suspense } from 'react'
 import FeaturedStudioList from '../FeaturedStudioList/FeaturedStudioList'
-
-// const fetchAllStudios = async (category: string): Promise<Studio[]> => {
-//      try {
-//           const url = category 
-//                ? `http://localhost:5000/all-studios?category=${encodeURIComponent(category)}`
-//                : `http://localhost:5000/all-studios`;
-//           const res = await fetch(url, { cache: 'no-store' });
-
-//           if (!res?.ok) {
-//                throw new Error("Failed to fetch studios")
-//           }
-
-//           return res.json();
-//      } catch (err: any) {
-//           console.error("Studio fetch error:", err);
-//           return []
-//      }
-// }
+import Link from 'next/link'
 
 const FeaturedStudio = () => {
      return (
@@ -30,10 +13,10 @@ const FeaturedStudio = () => {
                     </div>
 
                     <div>
-                         <div className="inline-flex items-center gap-1.5 text-sm font-medium text-amber-600 hover:text-amber-700 cursor-pointer transition-colors">
+                         <Link href={`/studios`} className="inline-flex items-center gap-1.5 text-sm font-medium text-amber-600 hover:text-amber-700 cursor-pointer transition-colors">
                               <span>Explore All Studios</span>
                               <span>→</span>
-                         </div>
+                         </Link>
                     </div>
                </div>
 

@@ -5,12 +5,11 @@ import Link from 'next/link';
 
 const fetchAllStudios = async (): Promise<Studio[]> => {
      try {
-          const res = await fetch(`http://localhost:5000/all-studios`);
+          const res = await fetch(`http://localhost:5000/featured-studios`);
 
           if (!res?.ok) {
                throw new Error("Failed to fetch studios")
           }
-
           return res.json();
      } catch (err: any) {
           console.error("Studio fetch error:", err);
@@ -28,7 +27,7 @@ const FeaturedStudioList = async () => {
                     studio.length > 0 ? (
                          <div className='grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
                               {
-                                   studio?.map((sdo: Studio, idx) => <StudioCard studio={sdo} />)
+                                   studio?.map((sdo: Studio, idx) => <StudioCard key={sdo?._id} studio={sdo} />)
                               }
                          </div>
                     ) : (

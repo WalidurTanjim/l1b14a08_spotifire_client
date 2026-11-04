@@ -91,8 +91,9 @@ const SignUpForm = ({ className, ...props }: React.ComponentProps<"div">) => {
 
                // console.log("Response after auth:", data);
                if(data?.user) {
-                    router.push("/");
-                    toast.success("User signup successfully");
+                    await authClient.signOut();
+                    router.push("/signin");
+                    toast.success("Registered successfully. Please signin");
                }else {
                     toast.error("Something went wrong! Try again.");
                }

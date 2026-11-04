@@ -37,6 +37,7 @@ interface AddNewStudio {
      image: string;
      amenities: string[];
      details: string;
+     createdAt: string;
 }
 
 export default function AddNewStudioForm() {
@@ -94,7 +95,8 @@ export default function AddNewStudioForm() {
                location: formData.get("location") as string || "",
                image: formData.get("image") as string || "",
                amenities: amenities,
-               details: formData.get("details") as string || ""
+               details: formData.get("details") as string || "",
+               createdAt: new Date().toISOString()
           };
           console.log("Form values:", formValues);
 
