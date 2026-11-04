@@ -93,7 +93,7 @@ export default function UpdateStudioForm({ studioId }: { studioId: string }) {
           }
           fetchStudioById();
      }, []);
-     console.log({ studio, studioLoading, studioError })
+     // console.log({ studio, studioLoading, studioError })
 
      const toggleAmenity = (item: string) => {
           if (amenities.includes(item)) {

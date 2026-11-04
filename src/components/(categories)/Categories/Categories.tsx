@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react'
 import CategoryList from '../CategoryList/CategoryList'
+import Link from 'next/link'
 
 const Categories = () => {
      return (
@@ -12,10 +13,10 @@ const Categories = () => {
                          </div>
 
                          <div>
-                              <div className="inline-flex items-center gap-1.5 text-sm font-medium text-amber-600 hover:text-amber-700 cursor-pointer transition-colors">
+                              <Link href={`/studios`} className="inline-flex items-center gap-1.5 text-sm font-medium text-amber-600 hover:text-amber-700 cursor-pointer transition-colors">
                                    <span>Explore All Workspaces</span>
                                    <span>→</span>
-                              </div>
+                              </Link>
                          </div>
                     </div>
 
